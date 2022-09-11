@@ -1,0 +1,57 @@
+﻿<Window x:Class="CharacterRedactorWPFLK.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CharacterRedactorWPFLK"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Frame Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" IsEnabled="False"/>
+        <TabControl Margin="0,0,207,221" HorizontalAlignment="Right" Width="560">
+            <TabItem x:Name="WarriorTab" Header="Warrior" GotFocus="CharacterTab_GotFocus">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="RougeTab" HorizontalAlignment="Center" Height="20" Header="Rouge" VerticalAlignment="Center" Width="54" GotFocus="CharacterTab_GotFocus">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="WizardTab" HorizontalAlignment="Center" Height="20" Header="Wizard" VerticalAlignment="Center" Width="54" GotFocus="CharacterTab_GotFocus">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+        <TextBox x:Name="TotalPointsTB" HorizontalAlignment="Left" Margin="545,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" UndoLimit="10" Text="200" IsEnabled="False"/>
+        <TextBlock x:Name="StrMinV" HorizontalAlignment="Left" Margin="117,224,0,0" TextWrapping="Wrap" Text="30" VerticalAlignment="Top" Height="24" Width="24" TextAlignment="Center"/>
+        <TextBlock x:Name="StrMaxV" HorizontalAlignment="Left" Margin="385,224,0,0" TextWrapping="Wrap" Text="250" VerticalAlignment="Top" Height="24" Width="24" TextAlignment="Center"/>
+        <TextBox x:Name="StrStatTB" HorizontalAlignment="Left" Margin="429,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" UndoLimit="10" IsEnabled="False"/>
+        <Button x:Name="StrMinusBtn" Content="-" HorizontalAlignment="Left" Margin="156,223,0,0" VerticalAlignment="Top" Width="20" Height="20" Click="MinusBtn_Click"/>
+        <Button x:Name="StrPlusBtn" Content="+" HorizontalAlignment="Left" Margin="351,223,0,0" VerticalAlignment="Top" Width="20" Height="20" Click="PlusBtn_Click"/>
+        <Slider x:Name="StrSlider" HorizontalAlignment="Left" Margin="176,218,0,0" VerticalAlignment="Top" Width="175" Maximum="250" Minimum="30" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" TickPlacement="TopLeft" Height="30" ValueChanged="Slider_ValueChanged" SmallChange="1" IsSnapToTickEnabled="True" TickFrequency="5"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,226,0,0" TextWrapping="Wrap" Text="Strength" VerticalAlignment="Top"/>
+        <TextBlock x:Name="DexMinV" HorizontalAlignment="Left" Margin="117,266,0,0" TextWrapping="Wrap" Text="15" VerticalAlignment="Top" Height="24" Width="24" TextAlignment="Center"/>
+        <TextBlock x:Name="DexMaxV" HorizontalAlignment="Left" Margin="385,266,0,0" TextWrapping="Wrap" Text="70" VerticalAlignment="Top" Height="24" Width="24" TextAlignment="Center"/>
+        <TextBox x:Name="DexStatTB" HorizontalAlignment="Left" Margin="429,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" UndoLimit="10" IsEnabled="False"/>
+        <Button x:Name="DexMinusBtn" Content="-" HorizontalAlignment="Left" Margin="156,265,0,0" VerticalAlignment="Top" Width="20" Height="20" Click="MinusBtn_Click"/>
+        <Button x:Name="DexPlusBtn" Content="+" HorizontalAlignment="Left" Margin="351,265,0,0" VerticalAlignment="Top" Width="20" Height="20" Click="PlusBtn_Click"/>
+        <Slider x:Name="DexSlider" HorizontalAlignment="Left" Margin="176,260,0,0" VerticalAlignment="Top" Width="175" Maximum="70" Minimum="15" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" TickPlacement="TopLeft" TickFrequency="5" Height="30" ValueChanged="Slider_ValueChanged" IsSnapToTickEnabled="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,268,0,0" TextWrapping="Wrap" Text="Dexterity" VerticalAlignment="Top"/>
+        <TextBlock x:Name="ConMinV" HorizontalAlignment="Left" Margin="117,304,0,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" Height="24" Width="24" TextAlignment="Center"/>
+        <TextBlock x:Name="ConMaxV" HorizontalAlignment="Left" Margin="385,304,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Height="24" Width="24" TextAlignment="Center"/>
+        <TextBox x:Name="ConStatTB" HorizontalAlignment="Left" Margin="429,304,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" UndoLimit="10" IsEnabled="False"/>
+        <Button x:Name="ConMinusBtn" Content="-" HorizontalAlignment="Left" Margin="156,303,0,0" VerticalAlignment="Top" Width="20" Height="20" Click="MinusBtn_Click"/>
+        <Button x:Name="ConPlusBtn" Content="+" HorizontalAlignment="Left" Margin="351,303,0,0" VerticalAlignment="Top" Width="20" Height="20" Click="PlusBtn_Click"/>
+        <Slider x:Name="ConSlider" HorizontalAlignment="Left" Margin="176,298,0,0" VerticalAlignment="Top" Width="175" Maximum="100" Minimum="20" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" TickPlacement="TopLeft" TickFrequency="5" Height="30" ValueChanged="Slider_ValueChanged" IsSnapToTickEnabled="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,306,0,0" TextWrapping="Wrap" Text="Constitution" VerticalAlignment="Top"/>
+        <TextBlock x:Name="IntMinV" HorizontalAlignment="Left" Margin="117,341,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Height="24" Width="24" TextAlignment="Center"/>
+        <TextBlock x:Name="IntMaxV" HorizontalAlignment="Left" Margin="385,341,0,0" TextWrapping="Wrap" Text="50" VerticalAlignment="Top" Height="24" Width="24" TextAlignment="Center"/>
+        <TextBox x:Name="IntStatTB" HorizontalAlignment="Left" Margin="429,341,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" UndoLimit="10" IsEnabled="False"/>
+        <Button x:Name="IntMinusBtn" Content="-" HorizontalAlignment="Left" Margin="156,340,0,0" VerticalAlignment="Top" Width="20" Height="20" Click="MinusBtn_Click"/>
+        <Button x:Name="IntPlusBtn" Content="+" HorizontalAlignment="Left" Margin="351,340,0,0" VerticalAlignment="Top" Width="20" Height="20" Click="PlusBtn_Click"/>
+        <Slider x:Name="IntSlider" HorizontalAlignment="Left" Margin="176,335,0,0" VerticalAlignment="Top" Width="175" Maximum="50" Minimum="10" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" TickPlacement="TopLeft" TickFrequency="5" Height="30" ValueChanged="Slider_ValueChanged" IsSnapToTickEnabled="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,343,0,0" TextWrapping="Wrap" Text="Intelligence" VerticalAlignment="Top"/>
+        <Button x:Name="CreateBtn" Content="Create" HorizontalAlignment="Left" Margin="555,341,0,0" VerticalAlignment="Top" Click="CreateBtn_Click"/>
+
+    </Grid>
+</Window>
