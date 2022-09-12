@@ -13,13 +13,28 @@
         <Frame Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" IsEnabled="False"/>
         <TabControl Margin="0,0,207,221" HorizontalAlignment="Right" Width="560">
             <TabItem x:Name="WarriorTab" Header="Warrior" GotFocus="CharacterTab_GotFocus">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Strength: +5 Attack, +2 Health" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Dexterity: +1 Attack, +1 Physical defense" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="Constitution: +10 Health, +2 Physical defense" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="Intelligence: +1 Mana, +1 Magic attack" VerticalAlignment="Top"/>
+                </Grid>
             </TabItem>
             <TabItem x:Name="RougeTab" HorizontalAlignment="Center" Height="20" Header="Rouge" VerticalAlignment="Center" Width="54" GotFocus="CharacterTab_GotFocus">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Strength: +2 Attack, +1 Health" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Dexterity: +4 Attack, +1.5 Physical defense" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="Constitution: +6 Health" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="Intelligence: +1.5 Mana, +2 Magic attack" VerticalAlignment="Top"/>
+                </Grid>
             </TabItem>
             <TabItem x:Name="WizardTab" HorizontalAlignment="Center" Height="20" Header="Wizard" VerticalAlignment="Center" Width="54" GotFocus="CharacterTab_GotFocus">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Strength: +3 Attack, +1 Health" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Dexterity: +0.5 Physical defense" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="Constitution: +3 Health, +1 Physical defense" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="Intelligence: +2 Mana, +5 Magic attack" VerticalAlignment="Top"/>
+                </Grid>
             </TabItem>
         </TabControl>
         <TextBox x:Name="TotalPointsTB" HorizontalAlignment="Left" Margin="545,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" UndoLimit="10" Text="200" IsEnabled="False"/>
@@ -52,6 +67,7 @@
         <Slider x:Name="IntSlider" HorizontalAlignment="Left" Margin="176,335,0,0" VerticalAlignment="Top" Width="175" Maximum="50" Minimum="10" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" TickPlacement="TopLeft" TickFrequency="5" Height="30" ValueChanged="Slider_ValueChanged" IsSnapToTickEnabled="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="33,343,0,0" TextWrapping="Wrap" Text="Intelligence" VerticalAlignment="Top"/>
         <Button x:Name="CreateBtn" Content="Create" HorizontalAlignment="Left" Margin="555,341,0,0" VerticalAlignment="Top" Click="CreateBtn_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="483,223,0,0" TextWrapping="Wrap" Text="Skill points" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

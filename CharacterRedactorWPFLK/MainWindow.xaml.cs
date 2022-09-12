@@ -246,12 +246,12 @@ namespace CharacterRedactorWPFLK
                     break;
                 default: break;
             }
-            MessageBox.Show($"{SelectedCharacter.Name}: " +
-                $"\nHealth - {SelectedCharacter.Health}" +
-                $"\nAttack - {SelectedCharacter.Attack}" +
-                $"\nPhisical defense - {SelectedCharacter.PDef}" +
-                $"\nMana - {SelectedCharacter.Mana}" +
-                $"\nMAH - {SelectedCharacter.MAH}");
+            MessageBox.Show(SelectedCharacter.ToString());
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -30,7 +30,7 @@ namespace CharacterRedactorLK
             this.Health += Constitution * 10;
             this.PDef += Constitution * 2;
             this.Mana += Intelligence * 1;
-            this.MAH += Intelligence * 1;
+            this.MAttack += Intelligence * 1;
 
         }
         public Warrior() : base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, "Warrior") { }

@@ -29,7 +29,7 @@ namespace CharacterRedactorLK
             this.Health += Constitution * 3;
             this.PDef += Constitution * 1;
             this.Mana += Intelligence * 2;
-            this.MAH += Intelligence * 5;
+            this.MAttack += Intelligence * 5;
         }
         public Wizard() : base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, "Wizard") { }
     }

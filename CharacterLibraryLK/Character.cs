@@ -12,7 +12,7 @@ namespace CharacterRedactorLK
         public double Health { get; set; }
         public double PDef { get; set; }
         public double Mana { get; set; }
-        public double MAH { get; set; }
+        public double MAttack { get; set; }
 
         public int MaxStr { get; }
         public int MinStr { get; }
@@ -36,6 +36,16 @@ namespace CharacterRedactorLK
             this.MinInt = minInt;
             this.MaxInt = maxInt;
             this.Name = name;
+        }
+
+        public override string ToString()
+        {
+            return ($"{ this.Name}: " +
+                $"\nHealth - {this.Health}" +
+                $"\nAttack - {this.Attack}" +
+                $"\nPhisical defense - {this.PDef}" +
+                $"\nMana - {this.Mana}" +
+                $"\nMAttack - {this.MAttack}");
         }
     }
 }
