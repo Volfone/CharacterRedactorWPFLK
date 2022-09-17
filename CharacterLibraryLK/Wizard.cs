@@ -16,8 +16,8 @@ namespace CharacterRedactorLK
         public static int MinCon = 15;
         public static int MaxInt = 250;
         public static int MinInt = 35;
-        public Wizard(int strength, int dexterity, int constitution, int intelligence) :
-            base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, "Wizard")
+        public Wizard(int strength, int dexterity, int constitution, int intelligence, string name) :
+            base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, name)
         {
             this.Strength = strength;
             this.Dexterity = dexterity;

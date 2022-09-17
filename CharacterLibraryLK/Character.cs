@@ -1,4 +1,6 @@
 using System;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace CharacterRedactorLK
 {
@@ -24,6 +26,9 @@ namespace CharacterRedactorLK
         public int MinInt { get; }
 
         public string Name { get; set; }
+
+        [BsonId]
+        ObjectId _id;
 
         public Character (int maxStr, int minStr, int maxDex, int minDex, int maxCon, int minCon, int maxInt, int minInt, string name)
         {

@@ -20,7 +20,7 @@
                     <TextBlock HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="Intelligence: +1 Mana, +1 Magic attack" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="RougeTab" HorizontalAlignment="Center" Height="20" Header="Rouge" VerticalAlignment="Center" Width="54" GotFocus="CharacterTab_GotFocus">
+            <TabItem x:Name="RogueTab" HorizontalAlignment="Center" Height="20" Header="Rogue" VerticalAlignment="Center" Width="54" GotFocus="CharacterTab_GotFocus">
                 <Grid Background="#FFE5E5E5">
                     <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Strength: +2 Attack, +1 Health" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Dexterity: +4 Attack, +1.5 Physical defense" VerticalAlignment="Top"/>
@@ -34,6 +34,16 @@
                     <TextBlock HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Dexterity: +0.5 Physical defense" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="Constitution: +3 Health, +1 Physical defense" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="Intelligence: +2 Mana, +5 Magic attack" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="CharacterFinderTab" HorizontalAlignment="Center" Height="20" Header="CharacterFinder" VerticalAlignment="Top" Width="100" Margin="0,-1,0,0">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="FindCharacterTB" HorizontalAlignment="Left" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="FindCharacterBtn" Content="FindCharacter" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Click="FindCharacterBtn_Click"/>
+                    <Button x:Name="FindAllCharacterBtn" Content="FindAllCharacter" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Click="FindAllCharacterBtn_Click"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Character name" VerticalAlignment="Top"/>
+                    <TextBox x:Name="CharacterFinderTextBox" HorizontalAlignment="Left" Margin="159,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="385" Height="165"/>
+                    <ComboBox x:Name="FinderCharacterCB" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" SelectionChanged="FinderCharacterCB_SelectionChanged"/>
                 </Grid>
             </TabItem>
         </TabControl>
@@ -68,6 +78,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="33,343,0,0" TextWrapping="Wrap" Text="Intelligence" VerticalAlignment="Top"/>
         <Button x:Name="CreateBtn" Content="Create" HorizontalAlignment="Left" Margin="555,341,0,0" VerticalAlignment="Top" Click="CreateBtn_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="483,223,0,0" TextWrapping="Wrap" Text="Skill points" VerticalAlignment="Top"/>
+        <TextBlock x:Name="CharacterNameTBlock" HorizontalAlignment="Left" Margin="483,263,0,0" TextWrapping="Wrap" Text="Character name" VerticalAlignment="Top"/>
+        <TextBox x:Name="CharacterNameTBox" HorizontalAlignment="Left" Margin="483,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Warrior"/>
 
     </Grid>
 </Window>

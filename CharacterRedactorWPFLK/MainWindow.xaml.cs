@@ -191,20 +191,17 @@ namespace CharacterRedactorWPFLK
             catch { }
         }
 
-        private void CompleteBtn_Click(object sender, RoutedEventArgs e)
-        {
-            SelectedCharacter = new Warrior();
-            MessageBox.Show($"Warrior health - {SelectedCharacter.Health}, attack - {SelectedCharacter.Attack}");
-        }
-
         private void CharacterTab_GotFocus(object sender, RoutedEventArgs e)
         {
             currentTabName = (sender as TabItem).Name;
             switch (currentTabName)
             {
-                case "WarriorTab": SelectedCharacter = new Warrior(); break;
-                case "RougeTab": SelectedCharacter = new Rouge(); break;
-                case "WizardTab": SelectedCharacter = new Wizard(); break;
+                case "WarriorTab": SelectedCharacter = new Warrior();
+                                   CharacterNameTBox.Text = "Warrior"; break;
+                case "RogueTab": SelectedCharacter = new Rogue();
+                                   CharacterNameTBox.Text = "Rogue"; break;
+                case "WizardTab": SelectedCharacter = new Wizard();
+                                   CharacterNameTBox.Text = "Wizzard"; break;
                 default: break;
             }
             StrMaxV.Text = SelectedCharacter.MaxStr.ToString();
@@ -233,25 +230,71 @@ namespace CharacterRedactorWPFLK
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (CharacterNameTBox.Text == "")
+            {
+                MessageBox.Show("You didn't name your character");
+                return;
+            }
             switch (currentTabName)
             {
                 case "WarriorTab": SelectedCharacter = new Warrior(int.Parse(StrStatTB.Text),
-                    int.Parse(DexStatTB.Text), int.Parse(ConStatTB.Text), int.Parse(IntStatTB.Text)); 
+                    int.Parse(DexStatTB.Text), int.Parse(ConStatTB.Text), int.Parse(IntStatTB.Text), CharacterNameTBox.Text); 
                     break;
-                case "RougeTab": SelectedCharacter = new Rouge(int.Parse(StrStatTB.Text),
-                    int.Parse(DexStatTB.Text), int.Parse(ConStatTB.Text), int.Parse(IntStatTB.Text)); 
+                case "RougeTab": SelectedCharacter = new Rogue(int.Parse(StrStatTB.Text),
+                    int.Parse(DexStatTB.Text), int.Parse(ConStatTB.Text), int.Parse(IntStatTB.Text), CharacterNameTBox.Text); 
                     break;
                 case "WizardTab": SelectedCharacter = new Wizard(int.Parse(StrStatTB.Text),
-                    int.Parse(DexStatTB.Text), int.Parse(ConStatTB.Text), int.Parse(IntStatTB.Text)); 
+                    int.Parse(DexStatTB.Text), int.Parse(ConStatTB.Text), int.Parse(IntStatTB.Text), CharacterNameTBox.Text); 
                     break;
                 default: break;
             }
             MessageBox.Show(SelectedCharacter.ToString());
+            MongoExamples.AddToDB(SelectedCharacter);
         }
 
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CharacterFinderTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void FindCharacterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Character character = MongoExamples.Find(FindCharacterTB.Text);
+            try
+            {
+                CharacterFinderTextBox.Text = character.ToString();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Character not found");
+            }
+        }
+
+        private void FindAllCharacterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FinderCharacterCB.Items.Clear();
+            List<Character> characters = MongoExamples.FindAll();
+            CharacterFinderTextBox.Text = "";
+
+            foreach (var item in characters)
+            {
+                FinderCharacterCB.Items.Add(item.Name);
+            }
+        }
+
+        private void DataGrid_Selected(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("qwe");
+        }
+
+        private void DataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            MessageBox.Show("qwe");
+        }
+
+        private void FinderCharacterCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MessageBox.Show(FinderCharacterCB.Text);
         }
     }
 }

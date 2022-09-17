@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CharacterRedactorLK
 {
-    public class Rouge : Character
+    public class Rogue : Character
     {
         public static int MaxStr = 55;
         public static int MinStr = 15;
@@ -17,8 +17,8 @@ namespace CharacterRedactorLK
         public static int MaxInt = 70;
         public static int MinInt = 15;
 
-        public Rouge(int strength, int dexterity, int constitution, int intelligence) :
-            base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, "Rouge")
+        public Rogue(int strength, int dexterity, int constitution, int intelligence, string name) :
+            base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, name)
         {
             this.Strength = strength;
             this.Dexterity = dexterity;
@@ -32,6 +32,6 @@ namespace CharacterRedactorLK
             this.Mana += Intelligence * 1.5;
             this.MAttack += Intelligence * 2;
         }
-        public Rouge() : base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, "Rouge") { }
+        public Rogue() : base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, "Rogue") { }
     }
 }
