@@ -23,11 +23,11 @@ namespace CharacterRedactorLK
             var client = new MongoClient();
             var database = client.GetDatabase("CharacterDB");
             var collection = database.GetCollection<Character>("Characters");
-            var list = collection.Find(x => true).ToList();/*
+            var list = collection.Find(x => true).ToList();
             foreach (var item in list)
             {
-                Console.WriteLine($" {item?.Name} {item?.} {item?.Age} {item?.DriverCard}");
-            }*/
+                Console.WriteLine($" {item?.Name}");
+            }
             return list;
         }
 

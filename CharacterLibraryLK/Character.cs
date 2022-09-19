@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace CharacterRedactorLK
 {
+    [BsonKnownTypes(typeof(Rogue), typeof(Warrior), typeof(Wizard))]
     public class Character
     {
         public double Strength { get; set; }

@@ -38,12 +38,11 @@
             </TabItem>
             <TabItem x:Name="CharacterFinderTab" HorizontalAlignment="Center" Height="20" Header="CharacterFinder" VerticalAlignment="Top" Width="100" Margin="0,-1,0,0">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox x:Name="FindCharacterTB" HorizontalAlignment="Left" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="FindCharacterBtn" Content="FindCharacter" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Click="FindCharacterBtn_Click"/>
-                    <Button x:Name="FindAllCharacterBtn" Content="FindAllCharacter" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Click="FindAllCharacterBtn_Click"/>
+                    <Button x:Name="FindCharacterBtn" Content="FindCharacter" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Click="FindCharacterBtn_Click"/>
+                    <Button x:Name="FindAllCharacterBtn" Content="FindAllCharacter" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Click="FindAllCharacterBtn_Click"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Character name" VerticalAlignment="Top"/>
-                    <TextBox x:Name="CharacterFinderTextBox" HorizontalAlignment="Left" Margin="159,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="385" Height="165"/>
-                    <ComboBox x:Name="FinderCharacterCB" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False" SelectionChanged="FinderCharacterCB_SelectionChanged"/>
+                    <TextBox x:Name="CharacterFinderTextBox" HorizontalAlignment="Left" Margin="134,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="410" Height="165"/>
+                    <ComboBox x:Name="FinderCharacterCB" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="97" IsSynchronizedWithCurrentItem="False"/>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -27,6 +27,7 @@ namespace CharacterRedactorWPFLK
         public MainWindow()
         {
             InitializeComponent();
+            LoadCB();
         }
 
         private void MinusBtn_Click(object sender, RoutedEventArgs e)
@@ -240,7 +241,7 @@ namespace CharacterRedactorWPFLK
                 case "WarriorTab": SelectedCharacter = new Warrior(int.Parse(StrStatTB.Text),
                     int.Parse(DexStatTB.Text), int.Parse(ConStatTB.Text), int.Parse(IntStatTB.Text), CharacterNameTBox.Text); 
                     break;
-                case "RougeTab": SelectedCharacter = new Rogue(int.Parse(StrStatTB.Text),
+                case "RogueTab": SelectedCharacter = new Rogue(int.Parse(StrStatTB.Text),
                     int.Parse(DexStatTB.Text), int.Parse(ConStatTB.Text), int.Parse(IntStatTB.Text), CharacterNameTBox.Text); 
                     break;
                 case "WizardTab": SelectedCharacter = new Wizard(int.Parse(StrStatTB.Text),
@@ -250,6 +251,7 @@ namespace CharacterRedactorWPFLK
             }
             MessageBox.Show(SelectedCharacter.ToString());
             MongoExamples.AddToDB(SelectedCharacter);
+            LoadCB();
         }
 
         private void CharacterFinderTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -259,42 +261,41 @@ namespace CharacterRedactorWPFLK
 
         private void FindCharacterBtn_Click(object sender, RoutedEventArgs e)
         {
-            Character character = MongoExamples.Find(FindCharacterTB.Text);
+            Character character = MongoExamples.Find(FinderCharacterCB.Text);
             try
             {
                 CharacterFinderTextBox.Text = character.ToString();
             }
-            catch(Exception ex)
+            catch(NullReferenceException)
             {
-                MessageBox.Show("Character not found");
+                MessageBox.Show("NullCharacterName");
             }
         }
 
         private void FindAllCharacterBtn_Click(object sender, RoutedEventArgs e)
         {
-            FinderCharacterCB.Items.Clear();
             List<Character> characters = MongoExamples.FindAll();
             CharacterFinderTextBox.Text = "";
 
             foreach (var item in characters)
             {
-                FinderCharacterCB.Items.Add(item.Name);
+                CharacterFinderTextBox.Text += item + 
+                    "\n-------------------------------------------------\n";
             }
         }
 
-        private void DataGrid_Selected(object sender, RoutedEventArgs e)
+        private void LoadCB()
         {
-            MessageBox.Show("qwe");
-        }
+            FinderCharacterCB.Items.Clear();
+            List<Character> characters = MongoExamples.FindAll();
+            CharacterFinderTextBox.Text = "";
+            string name = "";
 
-        private void DataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            MessageBox.Show("qwe");
-        }
-
-        private void FinderCharacterCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            MessageBox.Show(FinderCharacterCB.Text);
+            foreach (var item in characters)
+            {
+                name = item.Name;
+                FinderCharacterCB.Items.Add(name);
+            }
         }
     }
 }
