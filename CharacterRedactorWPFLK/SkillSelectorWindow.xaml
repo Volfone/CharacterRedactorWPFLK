@@ -1,0 +1,27 @@
+﻿<Window x:Class="CharacterRedactorWPFLK.SkillSelectorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CharacterRedactorWPFLK"
+        mc:Ignorable="d"
+        Title="SkillSelectorWindow" Height="340" Width="440">
+    <Grid Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <TabControl x:Name="SkillTabControl" Margin="10,10,0,0" Height="259" VerticalAlignment="Top" HorizontalAlignment="Left" Width="400">
+            <TabItem x:Name="HPSkillTab" Header="HPSkill">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="ATSkillTab" Header="ATSkill">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="PDSkillTab" HorizontalAlignment="Center" Height="20" Header="PDSkill" VerticalAlignment="Center" Width="54">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="MPSkillTab" HorizontalAlignment="Center" Height="20" Header="MPSkill" VerticalAlignment="Center" Width="54">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="SkillChooseBtn" Content="Choose" Margin="366,274,0,0" Click="SkillChooseBtn_Click" HorizontalAlignment="Left" Width="44" Height="20" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

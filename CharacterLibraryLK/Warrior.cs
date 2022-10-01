@@ -31,8 +31,73 @@ namespace CharacterRedactorLK
             this.PDef += Constitution * 2;
             this.Mana += Intelligence * 1;
             this.MAttack += Intelligence * 1;
-
         }
+        public Warrior(int strength, int dexterity, int constitution, int intelligence, string name, int level, int exp) :
+            base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, name, level, exp)
+        {
+            this.Strength = strength;
+            this.Dexterity = dexterity;
+            this.Constitution = constitution;
+            this.Intelligence = intelligence;
+            this.Attack += Strength * 5;
+            this.Health += Strength * 2;
+            this.Attack += Dexterity * 1;
+            this.PDef += Dexterity * 1;
+            this.Health += Constitution * 10;
+            this.PDef += Constitution * 2;
+            this.Mana += Intelligence * 1;
+            this.MAttack += Intelligence * 1;
+        }
+        public Warrior(int strength, int dexterity, int constitution, int intelligence, string name, List<Item> items) :
+            base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, name, items)
+        {
+            this.Strength = strength;
+            this.Dexterity = dexterity;
+            this.Constitution = constitution;
+            this.Intelligence = intelligence;
+            this.Attack += Strength * 5;
+            this.Health += Strength * 2;
+            this.Attack += Dexterity * 1;
+            this.PDef += Dexterity * 1;
+            this.Health += Constitution * 10;
+            this.PDef += Constitution * 2;
+            this.Mana += Intelligence * 1;
+            this.MAttack += Intelligence * 1;
+        }
+        public Warrior(int strength, int dexterity, int constitution, int intelligence, string name, List<Item> items, int level, int exp) :
+            base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, name, items, level, exp)
+        {
+            this.Strength = strength;
+            this.Dexterity = dexterity;
+            this.Constitution = constitution;
+            this.Intelligence = intelligence;
+            this.Attack += Strength * 5;
+            this.Health += Strength * 2;
+            this.Attack += Dexterity * 1;
+            this.PDef += Dexterity * 1;
+            this.Health += Constitution * 10;
+            this.PDef += Constitution * 2;
+            this.Mana += Intelligence * 1;
+            this.MAttack += Intelligence * 1;
+        }
+        public Warrior(int strength, int dexterity, int constitution, int intelligence, string name,
+            List<Item> items, List<Skill> skills, int acquiredSkillsAmount, int level, int exp) :
+            base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, name, items, skills, acquiredSkillsAmount, level, exp)
+        {
+            this.Strength = strength;
+            this.Dexterity = dexterity;
+            this.Constitution = constitution;
+            this.Intelligence = intelligence;
+            this.Attack += Strength * 5;
+            this.Health += Strength * 2;
+            this.Attack += Dexterity * 1;
+            this.PDef += Dexterity * 1;
+            this.Health += Constitution * 10;
+            this.PDef += Constitution * 2;
+            this.Mana += Intelligence * 1;
+            this.MAttack += Intelligence * 1;
+        }
+
         public Warrior() : base(MaxStr, MinStr, MaxDex, MinDex, MaxCon, MinCon, MaxInt, MinInt, "Warrior") { }
     }
 }
