@@ -144,6 +144,69 @@ namespace CharacterRedactorLK
             this.MinInt = minInt;
             this.MaxInt = maxInt;
             this.Name = name;
+            this.Level = 1;
+        }
+        public Character(int maxStr, int minStr, int maxDex, int minDex, int maxCon, int minCon, int maxInt, int minInt, string name, int level, int exp)
+        {
+            this.MaxStr = maxStr;
+            this.MinStr = minStr;
+            this.MaxDex = maxDex;
+            this.MinDex = minDex;
+            this.MaxCon = maxCon;
+            this.MinCon = minCon;
+            this.MinInt = minInt;
+            this.MaxInt = maxInt;
+            this.Name = name;
+            this.Level = level;
+            this.Expirience = exp;
+        }
+
+        public Character(int maxStr, int minStr, int maxDex, int minDex, int maxCon, int minCon, int maxInt, int minInt, string name, List<Item> items)
+        {
+            this.MaxStr = maxStr;
+            this.MinStr = minStr;
+            this.MaxDex = maxDex;
+            this.MinDex = minDex;
+            this.MaxCon = maxCon;
+            this.MinCon = minCon;
+            this.MinInt = minInt;
+            this.MaxInt = maxInt;
+            this.Name = name;
+            this.Items = items;
+            this.Level = 1;
+        }
+
+        public Character(int maxStr, int minStr, int maxDex, int minDex, int maxCon, int minCon, int maxInt, int minInt,
+            string name, List<Item> items, int level, int exp)
+        {
+            this.MaxStr = maxStr;
+            this.MinStr = minStr;
+            this.MaxDex = maxDex;
+            this.MinDex = minDex;
+            this.MaxCon = maxCon;
+            this.MinCon = minCon;
+            this.MinInt = minInt;
+            this.MaxInt = maxInt;
+            this.Name = name;
+            this.Items = items;
+            this.Level = level;
+            this.Expirience = exp;
+        }
+        public Character()
+        {
+        }
+
+        public Character(int maxStr, int minStr, int maxDex, int minDex, int maxCon, int minCon, int maxInt, int minInt, string name)
+        {
+            this.MaxStr = maxStr;
+            this.MinStr = minStr;
+            this.MaxDex = maxDex;
+            this.MinDex = minDex;
+            this.MaxCon = maxCon;
+            this.MinCon = minCon;
+            this.MinInt = minInt;
+            this.MaxInt = maxInt;
+            this.Name = name;
             this.Cash = 500;
             this.Level = 1;
         }

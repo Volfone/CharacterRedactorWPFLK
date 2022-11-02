@@ -88,7 +88,7 @@ namespace CharacterRedactorWPFLK
                     default: break;
                 }
             }
-            catch { }
+            catch(NullReferenceException) { }
         }
 
         private void PlusBtn_Click(object sender, RoutedEventArgs e)
@@ -131,7 +131,7 @@ namespace CharacterRedactorWPFLK
                     default: break;
                 }
             }
-            catch { }
+            catch(NullReferenceException) { }
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -749,6 +749,162 @@ namespace CharacterRedactorWPFLK
                 return;
             }
             CharacterFinderTextBox.Text = SelectedCharacter.ToString();
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (currentTabName == "CharacterFinderTab")
+                {
+                    MessageBox.Show("You can't do that");
+                    ItemTB.Text = "";
+                    AmountTB.Text = "";
+                    return;
+                }
+                items.Add(new Item(ItemTB.Text, int.Parse(AmountTB.Text)));
+                SelectedCharacter.Items = items;
+                CharacterFinderTextBox.Text = SelectedCharacter.ToString();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Incorrect input");
+            }
+        }
+
+        private void SelectBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Character character = MongoExamples.Find(FinderCharacterCB.Text);
+            redactingCharacter = true;
+            SelectedCharacter = character;
+            switch (character.GetType().Name)
+            {
+                case "Rogue": CharacterTabControl.Items.MoveCurrentToPosition(1); break;
+                case "Wizard": CharacterTabControl.Items.MoveCurrentToPosition(2); break;
+                case "Warrior": CharacterTabControl.Items.MoveCurrentToPosition(0); break;
+                default: break;
+            }
+            SelectedCharacter = character;
+            RedactBtn.Visibility = Visibility.Visible;
+            currentExp = SelectedCharacter.Expirience;
+            currentLevel = SelectedCharacter.Level;
+            points = 5 * currentLevel;
+            TotalPointsTB.Text = points.ToString();
+            items = SelectedCharacter.Items;
+            skills = SelectedCharacter.Skills;
+            redactCharacterName = SelectedCharacter.Name;
+            CharacterNameTBox.Text = SelectedCharacter.Name;
+            acquiredSkillsCount = SelectedCharacter.AcquiredSkillsAmount;
+            availableSkillsAmount = (currentLevel / 5) - SelectedCharacter.AcquiredSkillsAmount;
+            if (availableSkillsAmount > 0)
+            {
+                SkillChooserBtn.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                SkillChooserBtn.Visibility = Visibility.Hidden;
+            }
+            StrSlider.Value = (int)(character.Strength);
+            DexSlider.Value = (int)(character.Dexterity);
+            ConSlider.Value = (int)(character.Constitution);
+            IntSlider.Value = (int)(character.Intelligence);
+            points = 5 * currentLevel;
+            points -=
+                (int)(StrSlider.Value - StrSlider.Minimum) +
+                (int)(DexSlider.Value - DexSlider.Minimum) +
+                (int)(ConSlider.Value - ConSlider.Minimum) +
+                (int)(IntSlider.Value - IntSlider.Minimum);
+            TotalPointsTB.Text = points.ToString();
+            redactingCharacter = false;
+            CharacterNameTBox.Text = character.Name;
+            CharacterFinderTextBox.Text = SelectedCharacter.ToString();
+        }
+
+        private void RedactBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MongoExamples.ReplaceByName(redactCharacterName, SelectedCharacter);
+            MessageBox.Show("Character redacted");
+            redactCharacterName = "";
+        }
+
+        private void CharacterNameTBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                SelectedCharacter.Name = CharacterNameTBox.Text;
+                CharacterFinderTextBox.Text = SelectedCharacter.ToString();
+            }
+            catch (NullReferenceException) { }
+        }
+
+        private void ExpirienceAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentTabName == "CharacterFinderTab")
+            {
+                MessageBox.Show("You can't do that");
+                return;
+            }
+            currentExp += 100000;
+            SelectedCharacter.Expirience = currentExp;
+            if (SelectedCharacter.Level > currentLevel)
+            {
+                points += 5 * (SelectedCharacter.Level - currentLevel);
+                currentLevel = SelectedCharacter.Level;
+                currentExp = SelectedCharacter.Expirience;
+            }
+            availableSkillsAmount = currentLevel / 5 - SelectedCharacter.AcquiredSkillsAmount;
+            if (availableSkillsAmount > 0)
+            {
+                SkillChooserBtn.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                SkillChooserBtn.Visibility = Visibility.Hidden;
+            }
+            TotalPointsTB.Text = points.ToString();
+            SelectedCharacter.Name = CharacterNameTBox.Text;
+            CharacterFinderTextBox.Text = SelectedCharacter.ToString();
+        }
+
+        private void SkillChooserBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SkillSelectorWindow skillSelectorWindow = new SkillSelectorWindow();
+            if (skillSelectorWindow.ShowDialog().Value)
+            {
+                skills.Add(skillSelectorWindow.SelectedSkill);
+                SelectedCharacter.Skills = skills;
+                availableSkillsAmount -= 1;
+                acquiredSkillsCount += 1;
+                SelectedCharacter.AcquiredSkillsAmount = acquiredSkillsCount;
+                if (availableSkillsAmount > 0)
+                {
+                    SkillChooserBtn.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    SkillChooserBtn.Visibility = Visibility.Hidden;
+                }
+                switch (currentTabName)
+                {
+                    case "WarriorTab":
+                        SelectedCharacter = new Warrior((int)StrSlider.Value, (int)DexSlider.Value,
+                 (int)ConSlider.Value, (int)IntSlider.Value, CharacterNameTBox.Text,
+                 items, skills, acquiredSkillsCount, currentLevel, currentExp);
+                        break;
+                    case "RogueTab":
+                        SelectedCharacter = new Rogue((int)StrSlider.Value, (int)DexSlider.Value,
+                   (int)ConSlider.Value, (int)IntSlider.Value, CharacterNameTBox.Text,
+                   items, skills, acquiredSkillsCount, currentLevel, currentExp);
+                        break;
+                    case "WizardTab":
+                        SelectedCharacter = new Wizard((int)StrSlider.Value, (int)DexSlider.Value,
+                  (int)ConSlider.Value, (int)IntSlider.Value, CharacterNameTBox.Text,
+                  items, skills, acquiredSkillsCount, currentLevel, currentExp);
+                        break;
+                    default: break;
+                }
+                CharacterFinderTextBox.Text = SelectedCharacter.ToString();
+            }
         }
     }
 }
