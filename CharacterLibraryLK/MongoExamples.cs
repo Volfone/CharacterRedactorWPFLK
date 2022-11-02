@@ -24,10 +24,6 @@ namespace CharacterRedactorLK
             var database = client.GetDatabase("CharacterDB");
             var collection = database.GetCollection<Character>("Characters");
             var list = collection.Find(x => true).ToList();
-            foreach (var item in list)
-            {
-                Console.WriteLine($" {item?.Name}");
-            }
             return list;
         }
 
@@ -37,11 +33,25 @@ namespace CharacterRedactorLK
             var database = client.GetDatabase("CharacterDB");
             var collection = database.GetCollection<Character>("Characters");
             var one = collection.Find(x => x.Name == name).FirstOrDefault();
+            switch (one.GetType().Name)
+            {
+                case "Rogue": return one as Rogue; break;
+                case "Wizard": return one as Wizard; break;
+                case "Warrior": return one as Warrior; break;
+                default: break;
+            }
             return one;
 /*
-                Console.WriteLine($" {one?.Name} {one?.Email} {one?.Age} {one?.DriverCard}");*/
+            Console.WriteLine($" {one?.Name} {one?.Email} {one?.Age} {one?.DriverCard}");*/
 
 
+        }
+        public static void ReplaceByName(string name, Character character)
+        {
+            var client = new MongoClient();
+            var database = client.GetDatabase("CharacterDB");
+            var collection = database.GetCollection<Character>("Characters");
+            collection.ReplaceOne(x => x.Name == name, character);
         }
     }
 }
