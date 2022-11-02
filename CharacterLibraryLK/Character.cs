@@ -128,7 +128,7 @@ namespace CharacterRedactorLK
 
         [BsonIgnoreIfDefault]
         [BsonId]
-        ObjectId _id;
+        ObjectId _id;/*
         public Character()
         {
         }
@@ -145,7 +145,7 @@ namespace CharacterRedactorLK
             this.MaxInt = maxInt;
             this.Name = name;
             this.Level = 1;
-        }
+        }*//*
         public Character(int maxStr, int minStr, int maxDex, int minDex, int maxCon, int minCon, int maxInt, int minInt, string name, int level, int exp)
         {
             this.MaxStr = maxStr;
@@ -159,7 +159,7 @@ namespace CharacterRedactorLK
             this.Name = name;
             this.Level = level;
             this.Expirience = exp;
-        }
+        }*/
 
         public Character(int maxStr, int minStr, int maxDex, int minDex, int maxCon, int minCon, int maxInt, int minInt, string name, List<Item> items)
         {
